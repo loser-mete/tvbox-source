@@ -8,16 +8,18 @@
 
 ## 一、源地址（先看你用哪个客户端）
 
-> ⚠️ **接口无效的真正原因（2026-11-18 定位）**：配置顶层若含 `urls` 字段（哪怕空对象 `{}`），
-> 影视仓会当「多仓清单」解析导致「接口无效」。**单线路普通源必须顶层只有 `sites`/`lives`，没有 `urls`**——
-> 与能正常加载的参考配置 `wex.json` 结构一致。下方的 myfav.json 已按此修正。
+> ⚠️ **两个关键坑（2026-11-18 全部定位并修复）**：
+> 1. **接口无效**：配置顶层若含 `urls` 字段（哪怕空对象 `{}`），影视仓会当「多仓清单」解析导致「接口无效」。单线路普通源**顶层绝不能有 `urls`**。
+> 2. **jar 加载失败**：`csp_` 类站点（含**苹果APP** `csp_AppDrama`）天生依赖 spider.jar，无法做成 HTTP 直链。之前把 213 个 csp 站点塞进 `config.json` 却**没带 spider 字段** → 影视仓报「jar 加载失败」。
+>
+> 现在的 `myfav.json` **完全复刻你能打开的 `xiaosa` 格式**：顶层 `spider: "./spider.jar;md5;..."` + 仓库根目录内置 spider.jar（md5 实测匹配）+ 无 `urls`。
 
-### ⭐ 我的精选（推荐 · 单线路普通源）
-**纯净单仓配置**：顶层只有 `sites`/`lives`，无 `urls`、无 spider 依赖，25 个实测苹果CMS直链站按内容归类，含直播。格式与你提供的 `wex.json` 一致，影视仓可直接加载：
+### ⭐ 我的精选（推荐 · 单线路 · 含苹果APP）
+**自带 jar 的完整单仓配置**：51 个 csp 精选站（**19 个苹果/APP 站**含 4 个 AppDrama 苹果站 + 影视/短剧/动漫/儿童）+ 13 个直链兜底站 + 直播，按内容归类。格式与你能打开的 `xiaosa` 一致，影视仓可直接加载：
 ```
 https://raw.githubusercontent.com/loser-mete/tvbox-source/main/myfav.json
 ```
-国内镜像（主地址打不开时试）：
+国内镜像（主地址打不开时试，**推荐用这个**，jar 也走镜像更快）：
 ```
 https://ghfast.top/https://raw.githubusercontent.com/loser-mete/tvbox-source/main/myfav.json
 https://cdn.jsdelivr.net/gh/loser-mete/tvbox-source@main/myfav.json
@@ -26,16 +28,17 @@ https://cdn.jsdelivr.net/gh/loser-mete/tvbox-source@main/myfav.json
 
 | 分组（影视仓标签页） | 内容 |
 |------|------|
-| 🔥影视精选 | 8 个 2026-11-18 实测可用的苹果CMS直链站（光速/极速/无尽/百度/360/魔都/天涯/闪电） |
-| 🌈动漫专区 | 5 个内置动漫分类的直链站（进站后点「动漫」标签） |
-| 📺短剧专区 | 红果短剧 + 淘片短剧（3228 页短剧资源）+ 3 个内置短剧分类站 |
-| 🧒少儿儿童 | 内置「儿童儿歌」分类的直链站 |
-| ⚡备用线路 | 6 个多源交叉收录的老牌站（量子/非凡/暴风/天空/电影天堂/红牛） |
+| 🍎苹果APP | 19 个 APP 采集站，其中「天堂/橘汁/华谊/苹果」为 AppDrama 苹果站（需 jar） |
+| 🔥影视精选 | 15 个 csp 影视站（看剧/懂片/星辰/飞娱/1905 等）+ 8 个直链兜底 |
+| 📺短剧专区 | 7猫/河马/围观/好看/星芽/果果 短剧 + 淘片直链 |
+| 🌈动漫专区 | 6 个 csp 动漫站（番社/赏月/稀饭/巴士/吉里/花子） |
+| 🧒少儿儿童 | 童趣/兔小贝/贝乐虎 |
+| ⚡更多内容 | 看球/体育 |
 | 📡直播 | APTV / 天幕 / 大嘴巴，走国内镜像，带 EPG |
 
-> 所有点播站点均为 **HTTP 直链**（苹果CMS V10 标准接口 `api.php/provide/vod/`），影视仓原生支持、**零 spider 依赖**。
-> 短剧/动漫/少儿用站内的**分类标签**查看——这些综合站内置的分类比单一专项源更全更稳。
-> 早期版本曾放 `csp_`/`drpy.js` 脚本型专项源（含苹果APP `csp_AppDrama`，依赖 spider.jar），影视仓会失效，现已全部移除。
+> **为什么这次能打开**：`spider.jar` 已放在仓库根目录，与 `myfav.json` 同目录，`spider` 字段用相对路径 `./spider.jar` + md5 校验——这正是 `xiaosa/api.json` 能正常加载的同款写法。影视仓会相对配置地址取 jar：用 raw 地址加载就从 raw 取，用 ghfast 镜像加载就走镜像。
+> **兜底设计**：13 个 HTTP 直链站零 jar 依赖，即使某天 jar 加载失败，直链站仍可用。
+> 已排除所有依赖 `./py/`、`./json/` 外部文件的站点（本仓库无这些文件，会失效）。
 
 ### ✅ 影视仓 / FongMi 完整源清单（站点多、求全用这个）
 ```
@@ -90,8 +93,12 @@ https://raw.githubusercontent.com/loser-mete/tvbox-source/main/all.m3u
 
 | 文件 | 作用 |
 |------|------|
+| `myfav.json` | ⭐**我的精选**：自带 jar 的单线路配置（含苹果APP），影视仓填这个 |
+| `spider.jar` | myfav.json 配套的 spider.jar（md5=decb609b673019e18512dc3a96b6a252） |
+| `csp_picked.json` | 从 xiaosa 精选的 csp 站点数据（build_myfav.py 的输入） |
+| `csp_extras.json` | xiaosa 的 parses/rules/flags/ads（播放解析 + 去广告） |
 | `fongmi.json` | **影视仓专用**：配置地址清单（urls 数组），影视仓填这个 |
-| `config.json` | **TVBox 原版专用**：单仓聚合配置，TVBox 填这个 |
+| `config.json` | **TVBox 原版专用**：单仓聚合配置，TVBox 填这个（含 csp 站，需配 jar） |
 | `fongmi_seeds.json` | 影视仓种子清单来源（实测有效的优质源） |
 | `all.m3u` | 聚合后的直播源（M3U 格式） |
 | `all.txt` | 聚合后的直播源（名称,URL 格式） |
