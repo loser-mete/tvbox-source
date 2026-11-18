@@ -1,6 +1,6 @@
 {
   "https://jihulab.com/bh666/YGBH/-/raw/main/ygbox.json": {
-    "fail_streak": 5,
+    "fail_streak": 6,
     "last_ok": "",
     "site_count": 0
   },
@@ -30,7 +30,7 @@
     "site_count": 48
   },
   "https://raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json": {
-    "fail_streak": 4,
+    "fail_streak": 5,
     "last_ok": "",
     "site_count": 0
   },

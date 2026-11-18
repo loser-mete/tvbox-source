@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18 08:52:10 UTC+8",
+  "generated_at": "2026-11-18 08:54:37 UTC+8",
   "degraded": false,
   "summary": {
     "config_total": 8,
@@ -22,9 +22,9 @@
       "sites": 0,
       "lives": 0,
       "bytes": 69449,
-      "ms": 462,
+      "ms": 82,
       "status": 200,
-      "reason": "JSON解析失败(Extra data: line 1 column 17 (char 16)) [连续失败4/3]",
+      "reason": "JSON解析失败(Extra data: line 1 column 17 (char 16)) [连续失败5/3]",
       "retryable": false,
       "adopted": false
     },
@@ -36,7 +36,7 @@
       "sites": 744,
       "lives": 0,
       "bytes": 1966,
-      "ms": 321,
+      "ms": 96,
       "status": 200,
       "reason": "多仓展开7/14",
       "retryable": false,
@@ -50,7 +50,7 @@
       "sites": 2,
       "lives": 1,
       "bytes": 2508,
-      "ms": 1573,
+      "ms": 91,
       "status": 200,
       "reason": "",
       "retryable": false,
@@ -64,9 +64,9 @@
       "sites": 0,
       "lives": 0,
       "bytes": 109167,
-      "ms": 327,
+      "ms": 883,
       "status": 200,
-      "reason": "JSON解析失败(Extra data: line 1 column 22 (char 21)) [连续失败5/3]",
+      "reason": "JSON解析失败(Extra data: line 1 column 22 (char 21)) [连续失败6/3]",
       "retryable": false,
       "adopted": false
     },
@@ -78,7 +78,7 @@
       "sites": 69,
       "lives": 1,
       "bytes": 51172,
-      "ms": 375,
+      "ms": 112,
       "status": 200,
       "reason": "",
       "retryable": false,
@@ -92,7 +92,7 @@
       "sites": 43,
       "lives": 1,
       "bytes": 23457,
-      "ms": 304,
+      "ms": 95,
       "status": 200,
       "reason": "",
       "retryable": false,
@@ -106,7 +106,7 @@
       "sites": 48,
       "lives": 3,
       "bytes": 24820,
-      "ms": 363,
+      "ms": 75,
       "status": 200,
       "reason": "",
       "retryable": false,
@@ -120,7 +120,7 @@
       "sites": 135,
       "lives": 5,
       "bytes": 27518,
-      "ms": 366,
+      "ms": 104,
       "status": 200,
       "reason": "",
       "retryable": false,
@@ -135,7 +135,7 @@
       "ok": true,
       "channels": 120,
       "bytes": 21971,
-      "ms": 351,
+      "ms": 25,
       "status": 200,
       "reason": "",
       "retryable": false,
@@ -148,7 +148,7 @@
       "ok": true,
       "channels": 747,
       "bytes": 195150,
-      "ms": 989,
+      "ms": 75,
       "status": 200,
       "reason": "",
       "retryable": false,
@@ -161,7 +161,7 @@
       "ok": true,
       "channels": 43,
       "bytes": 3180,
-      "ms": 325,
+      "ms": 56,
       "status": 200,
       "reason": "",
       "retryable": false,
@@ -170,16 +170,16 @@
   ],
   "removed": [
     {
-      "name": "月光宝盒",
-      "url": "https://jihulab.com/bh666/YGBH/-/raw/main/ygbox.json",
-      "kind": "config",
-      "reason": "JSON解析失败(Extra data: line 1 column 22 (char 21)) [连续失败5/3]"
-    },
-    {
       "name": "南风XC",
       "url": "https://raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json",
       "kind": "config",
-      "reason": "JSON解析失败(Extra data: line 1 column 17 (char 16)) [连续失败4/3]"
+      "reason": "JSON解析失败(Extra data: line 1 column 17 (char 16)) [连续失败5/3]"
+    },
+    {
+      "name": "月光宝盒",
+      "url": "https://jihulab.com/bh666/YGBH/-/raw/main/ygbox.json",
+      "kind": "config",
+      "reason": "JSON解析失败(Extra data: line 1 column 22 (char 21)) [连续失败6/3]"
     }
   ],
   "observing": []
