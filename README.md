@@ -6,11 +6,27 @@
 
 ---
 
-## 一、源地址（在 TVBox 里填这个）
+## 一、源地址（先看你用哪个客户端）
 
-把下面任一地址填进 TVBox / 影视仓的「配置地址」：
+> ⚠️ **影视仓 / FongMi 用户请直接用【影视仓专用地址】**，不要用下面的 config.json！
+> 影视仓的「配置地址」要的是**配置地址清单** `{"urls":[{"name","url"}]}`（每条指向一个完整的带 spider 的原始配置），
+> 不是把站点拆解重组的单仓 JSON。填错格式就会提示「接口无效」。
 
-### 主地址（GitHub 原站）
+### ✅ 影视仓 / FongMi 专用地址（推荐）
+```
+https://raw.githubusercontent.com/loser-mete/tvbox-source/main/fongmi.json
+```
+国内镜像（主地址打不开时试）：
+```
+https://ghfast.top/https://raw.githubusercontent.com/loser-mete/tvbox-source/main/fongmi.json
+https://cdn.jsdelivr.net/gh/loser-mete/tvbox-source@main/fongmi.json
+```
+这个文件是 **26 条实测可用的完整配置源清单**，每天自动探活剔除失效源。每个源保持原样（含 spider.jar / drpy 脚本），影视仓能正常解析。
+
+### TVBox 原版 / 其他客户端
+把下面地址填进「配置地址」：
+
+#### 主地址（GitHub 原站）
 ```
 https://raw.githubusercontent.com/loser-mete/tvbox-source/main/config.json
 ```
@@ -49,7 +65,9 @@ https://raw.githubusercontent.com/loser-mete/tvbox-source/main/all.m3u
 
 | 文件 | 作用 |
 |------|------|
-| `config.json` | **主配置**，TVBox 填这个地址 |
+| `fongmi.json` | **影视仓专用**：配置地址清单（urls 数组），影视仓填这个 |
+| `config.json` | **TVBox 原版专用**：单仓聚合配置，TVBox 填这个 |
+| `fongmi_seeds.json` | 影视仓种子清单来源（实测有效的优质源） |
 | `all.m3u` | 聚合后的直播源（M3U 格式） |
 | `all.txt` | 聚合后的直播源（名称,URL 格式） |
 | `health.json` | 健康报告：每个源死活、剔除名单、观察名单 |
