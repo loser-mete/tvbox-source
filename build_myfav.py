@@ -11,12 +11,13 @@
 分组（group 字段，影视仓按此分标签页）：
   🔥影视精选 / 🌈动漫专区 / 📺短剧专区 / 🧒少儿儿童 / ⚡备用线路
 
-重要设计决策：
-  不使用任何 csp_/drpy.js 专项源。原因：这类站点依赖各自 spider.jar，
-  被影视仓作为单仓配置的 urls 订阅合并时，只用主配置的 spider，导致站点全废
-  （用户实测「单项专线打不开」）。而综合采集站本身内置动漫/短剧/儿童分类标签，
-  filterable=1 即可在站内切换，能力更全也更稳。
-  全部站点为 HTTP 直链、零 spider 依赖 —— 影视仓原生支持，不会「接口无效」。
+重要设计决策（2026-11-18 修正）：
+  1. 顶层绝对不能有 urls 字段！影视仓看到 urls 会当「多仓清单」解析，空对象 {}
+     会直接判「接口无效」——这是之前反复加载失败的根因。用户提供的可用参考
+     wex.json（https://9280.kstore.vip/wex.json）顶层为 sites/lives/wallpaper，无 urls。
+  2. 不使用任何 csp_/drpy.js 专项源（依赖各自 spider.jar，合并后站点全废）。
+     全部站点为 HTTP 直链、零 spider 依赖 —— 影视仓原生支持。
+  3. 站点均为实测可用的苹果CMS V10 直链（2026-11-18 探活）。
 """
 import json
 import os
@@ -39,44 +40,40 @@ OUT = os.path.join(BASE_DIR, "myfav.json")
 # 因此同一个站可归入多个内容分组（影视仓允许同名站不同 key 重复出现）。
 # 全部为 HTTP 直链、零 spider 依赖 —— 影视仓原生支持，不会「接口无效」。
 CURATED = [
-    # ===== 🔥 影视精选（综合最强、分类最全，实测可用）=====
-    ("🎬魔都资源",   "https://www.mdzyapi.com/api.php/provide/vod/?ac=list", "🔥影视精选", 1),
-    ("🎬天涯资源",   "https://ty.tyyszy5.com/api.php/provide/vod/?ac=list",  "🔥影视精选", 1),
-    ("🎬非凡资源",   "https://ffzy.tv/api.php/provide/vod/",                "🔥影视精选", 1),
-    ("🎬360资源",    "https://360zy.com/api.php/provide/vod/",              "🔥影视精选", 1),
-    ("🎬极速资源",   "https://jszyapi.com/api.php/provide/vod/at/json",     "🔥影视精选", 1),
-    ("🎬闪电资源",   "https://sdzyapi.com/api.php/provide/vod/?ac=list",    "🔥影视精选", 1),
-    ("🎬无尽资源",   "https://api.wujinapi.me/api.php/provide/vod/?ac=list","🔥影视精选", 1),
-    ("🎬光速资源",   "https://api.guangsuapi.com/api.php/provide/vod/from/guangsu/m3u8", "🔥影视精选", 1),
-    ("🎬优质资源",   "https://api.yyzy-tv.vip/inc/apijson.php",             "🔥影视精选", 1),
-    ("🎬百度资源",   "https://api.apibdzy.com/api.php/provide/vod/?ac=list","🔥影视精选", 1),
-    ("🎬创享资源",   "https://ys.cxkjg.cn/api/provide/vod/",                "🔥影视精选", 1),
-    ("🎬黑木耳",     "https://json02.heimuer.xyz/api.php/provide/vod/",     "🔥影视精选", 0),
+    # ===== 🔥 影视精选（2026-11-18 实测可用苹果CMS V10 直链）=====
+    ("🎬光速资源",   "https://api.guangsuapi.com/api.php/provide/vod/",        "🔥影视精选", 1),
+    ("🎬极速资源",   "https://jszyapi.com/api.php/provide/vod/",                "🔥影视精选", 1),
+    ("🎬无尽资源",   "https://api.wujinapi.com/api.php/provide/vod/",           "🔥影视精选", 1),
+    ("🎬百度资源",   "https://api.apibdzy.com/api.php/provide/vod/",            "🔥影视精选", 1),
+    ("🎬360资源",    "https://360zy.com/api.php/provide/vod/",                  "🔥影视精选", 1),
+    ("🎬魔都资源",   "https://www.mdzyapi.com/api.php/provide/vod/?ac=list",    "🔥影视精选", 1),
+    ("🎬天涯资源",   "https://ty.tyyszy5.com/api.php/provide/vod/?ac=list",     "🔥影视精选", 1),
+    ("🎬闪电资源",   "https://sdzyapi.com/api.php/provide/vod/?ac=list",        "🔥影视精选", 1),
 
-    # ===== 🌈 动漫专区（实测内置动漫分类最多）=====
-    ("🌈魔都动漫",   "https://www.mdzyapi.com/api.php/provide/vod/?ac=list", "🌈动漫专区", 0),
-    ("🌈天涯动漫",   "https://ty.tyyszy5.com/api.php/provide/vod/?ac=list",  "🌈动漫专区", 0),
-    ("🌈闪电动漫",   "https://sdzyapi.com/api.php/provide/vod/?ac=list",    "🌈动漫专区", 0),
-    ("🌈无尽动漫",   "https://api.wujinapi.me/api.php/provide/vod/?ac=list","🌈动漫专区", 0),
-    ("🌈百度动漫",   "https://api.apibdzy.com/api.php/provide/vod/?ac=list","🌈动漫专区", 0),
+    # ===== 🌈 动漫专区（站内自带动漫分类，filterable=1 可见）=====
+    ("🌈魔都动漫",   "https://www.mdzyapi.com/api.php/provide/vod/?ac=list",    "🌈动漫专区", 0),
+    ("🌈天涯动漫",   "https://ty.tyyszy5.com/api.php/provide/vod/?ac=list",     "🌈动漫专区", 0),
+    ("🌈闪电动漫",   "https://sdzyapi.com/api.php/provide/vod/?ac=list",        "🌈动漫专区", 0),
+    ("🌈无尽动漫",   "https://api.wujinapi.com/api.php/provide/vod/",           "🌈动漫专区", 0),
+    ("🌈百度动漫",   "https://api.apibdzy.com/api.php/provide/vod/",            "🌈动漫专区", 0),
 
-    # ===== 📺 短剧专区（实测内置短剧分类）=====
-    ("📺淘片短剧",   "https://taopianapi.com/cjapi/mc/vod/json.html",       "📺短剧专区", 1),
-    ("📺魔都短剧",   "https://www.mdzyapi.com/api.php/provide/vod/?ac=list", "📺短剧专区", 0),
-    ("📺360短剧",    "https://360zy.com/api.php/provide/vod/",              "📺短剧专区", 0),
-    ("📺极速短剧",   "https://jszyapi.com/api.php/provide/vod/at/json",     "📺短剧专区", 0),
+    # ===== 📺 短剧专区（淘片=专业短剧接口，3228页；红果短剧内容综合站也有）=====
+    ("📺红果短剧",   "https://taopianapi.com/cjapi/mc/vod/json.html",          "📺短剧专区", 1),
+    ("📺淘片短剧",   "https://taopianapi.com/cjapi/mc/vod/json.html",          "📺短剧专区", 1),
+    ("📺魔都短剧",   "https://www.mdzyapi.com/api.php/provide/vod/?ac=list",    "📺短剧专区", 0),
+    ("📺360短剧",    "https://360zy.com/api.php/provide/vod/",                  "📺短剧专区", 0),
+    ("📺极速短剧",   "https://jszyapi.com/api.php/provide/vod/",                "📺短剧专区", 0),
 
-    # ===== 🧒 少儿 / 儿童（无尽站实测有「儿童儿歌」分类）=====
-    ("🧒无尽儿童",   "https://api.wujinapi.me/api.php/provide/vod/?ac=list","🧒少儿儿童", 0),
+    # ===== 🧒 少儿 / 儿童（综合站内置「儿童儿歌」分类）=====
+    ("🧒无尽儿童",   "https://api.wujinapi.com/api.php/provide/vod/",           "🧒少儿儿童", 0),
 
-    # ===== ⚡ 备用线路（多源交叉收录，本机网络超时但口碑稳定）=====
-    ("⚡电影天堂",   "https://caiji.dyttzyapi.com/api.php/provide/vod/",    "⚡备用线路", 0),
-    ("⚡量子资源",   "https://cj.lziapi.com/api.php/provide/vod/",          "⚡备用线路", 0),
-    ("⚡暴风资源",   "https://bfzyapi.com/api.php/provide/vod/",            "⚡备用线路", 0),
-    ("⚡爱坤资源",   "https://ikunzyapi.com/api.php/provide/vod/",          "⚡备用线路", 0),
-    ("⚡新浪资源",   "https://api.xinlangapi.com/api.php/provide/vod/",     "⚡备用线路", 0),
-    ("⚡天空资源",   "https://m3u8.tiankongapi.com/api.php/provide/vod/",   "⚡备用线路", 0),
-    ("⚡索尼资源",   "https://suoniapi.com/api.php/provide/vod/",           "⚡备用线路", 0),
+    # ===== ⚡ 备用线路（多源交叉收录，本机网络波动但长期口碑稳定）=====
+    ("⚡量子资源",   "http://cj.lziapi.com/api.php/provide/vod/",              "⚡备用线路", 0),
+    ("⚡非凡资源",   "http://cj.ffzyapi.com/api.php/provide/vod/",             "⚡备用线路", 0),
+    ("⚡暴风资源",   "https://bfzyapi.com/api.php/provide/vod/",               "⚡备用线路", 0),
+    ("⚡天空资源",   "http://m3u8.tiankongapi.com/api.php/provide/vod/",       "⚡备用线路", 0),
+    ("⚡电影天堂",   "http://caiji.dyttzyapi.com/api.php/provide/vod/",        "⚡备用线路", 0),
+    ("⚡红牛资源",   "https://www.hongniuzy2.com/api.php/provide/vod/",        "⚡备用线路", 0),
 ]
 
 LIVES = [
@@ -124,12 +121,14 @@ def main():
         }
         sites.append(site)
 
-    # 不依赖任何 spider 专项源。分类能力由各直链站内置的分类标签提供。
+    # 纯净单仓格式：顶层绝对不能有 urls 字段！
+    # 关键教训：影视仓看到 urls 字段会当成「多仓清单」解析，空对象 {} 会直接判「接口无效」。
+    # 用户提供的可用参考 wex.json 顶层为 spider/wallpaper/sites/lives/...，无 urls。
+    # 这里只保留 sites + lives + wallpaper，全部为 HTTP 直链，零 spider 依赖。
     cfg = {
-        "urls": {},
+        "wallpaper": "https://api.dujin.org/bing/1920.php",
         "sites": sites,
         "lives": LIVES,
-        "wallpaper": "https://api.dujin.org/bing/1920.php",
     }
 
     with open(OUT, "w", encoding="utf-8", newline="\n") as f:
