@@ -407,76 +407,70 @@ def build_config(merged_sites, valid_live_sources, health, generated_at):
     return cfg
 
 
-def build_fongmi_config(merged_sites, valid_live_sources, generated_at, timeout):
-    """生成影视仓/FongMi 专用纯净配置。
+def build_fongmi_config(sources, generated_at, timeout):
+    """生成影视仓/FongMi 专用「配置地址清单」。
 
-    关键差异：
-      - 只保留 http(s) 直链 API 站点（影视仓原生支持，无需 spider.jar）
-      - 对每个 api 做真实探活，剔除无响应的
-      - urls 用影视仓兼容的对象格式（{名称: api}）
-      - 去掉 _meta 等非标准字段
+    影视仓的「配置地址」期待的格式是：
+        {"urls": [{"name": "源名", "url": "完整配置地址"}, ...]}
+    每个 url 指向一个带 spider 的完整原始配置（保持原样，不拆解 sites），
+    影视仓自己下载解析。这样 csp_ 内置类、jar、drpy 脚本都能正常工作。
+
+    数据来源：
+      1. fongmi_seeds.json —— 实测有效的优质种子清单
+      2. sources.json 的 configs —— 我们调研的配置源地址
+    对每个地址做 URL 级探活，剔除打不开/非配置内容的。
     """
-    direct = []
-    for s in merged_sites:
-        api = str(s.get("api", ""))
-        if not api.startswith(("http://", "https://")):
-            continue
-        if api.endswith((".py", ".js")) or "drpy" in api.lower():
-            continue
-        direct.append(s)
+    candidates = []
 
-    # 并发探活每个直链 api，只保留能返回内容的
-    def check(s):
-        ok, text, info = http_get(str(s.get("api")), timeout=min(timeout, 10), max_bytes=8192)
-        return ok, s, info
+    # 1) 种子清单
+    seed_file = os.path.join(BASE_DIR, "fongmi_seeds.json")
+    if os.path.exists(seed_file):
+        try:
+            with open(seed_file, "r", encoding="utf-8") as f:
+                seed = json.load(f)
+            for item in seed.get("urls", []):
+                if item.get("url"):
+                    candidates.append({"name": item.get("name", "源"), "url": item["url"]})
+        except Exception as e:
+            log("  读取种子清单失败: %s" % e)
 
-    usable = []
-    if direct:
-        with ThreadPoolExecutor(max_workers=12) as ex:
-            for ok, s, info in ex.map(check, direct):
-                if ok and info["bytes"] > 20:
-                    usable.append(s)
+    # 2) sources.json 的配置源（作为完整地址，而非拆解）
+    for it in sources.get("configs", []):
+        if it.get("url"):
+            candidates.append({"name": it.get("name", "源"), "url": it["url"]})
 
-    # 影视仓 sites：保留必要字段
-    sites = []
+    # 按 url 去重
     seen = set()
-    for s in usable:
-        api = str(s.get("api", ""))
-        if api in seen:
+    unique = []
+    for c in candidates:
+        u = c["url"].strip()
+        if not u or u in seen:
             continue
-        seen.add(api)
-        entry = {
-            "key": s.get("key") or s.get("name") or api,
-            "name": s.get("name") or s.get("key") or "站点",
-            "type": s.get("type", 1),
-            "api": api,
-            "searchable": s.get("searchable", 1),
-            "quickSearch": s.get("quickSearch", 0),
-            "filterable": s.get("filterable", 0),
-        }
-        if s.get("ext"):
-            entry["ext"] = s["ext"]
-        sites.append(entry)
+        seen.add(u)
+        unique.append({"name": c["name"], "url": u})
 
-    # urls：影视仓/TVBox 老式兼容格式
-    urls = {}
-    for s in sites:
-        urls[s["name"]] = s["api"]
+    # 并发探活每个完整配置地址
+    def check(c):
+        ok, text, info = http_get(c["url"], timeout=min(timeout, 12), max_bytes=65536)
+        usable = ok and info["bytes"] > 100
+        # 排除明显的非配置内容（HTML 错误页等）
+        head = text[:200].lower() if text else ""
+        if usable and ("<html" in head or "<!doctype" in head):
+            usable = False
+        return usable, c, info
 
-    lives = []
-    for lv in valid_live_sources:
-        entry = {"name": lv["name"], "type": 0, "url": lv["url"]}
-        if lv.get("epg"):
-            entry["epg"] = lv["epg"]
-        lives.append(entry)
+    urls = []
+    dead = []
+    with ThreadPoolExecutor(max_workers=12) as ex:
+        for usable, c, info in ex.map(check, unique):
+            if usable:
+                urls.append({"name": c["name"], "url": c["url"]})
+            else:
+                dead.append({"name": c["name"], "url": c["url"],
+                             "reason": info.get("error", "") or ("HTTP %s" % info.get("status", 0))})
 
-    cfg = {
-        "urls": urls,
-        "sites": sites,
-        "lives": lives,
-        "wallpaper": "https://api.dujin.org/bing/1920.php",
-    }
-    return cfg, len(direct), len(sites)
+    result = {"urls": urls}
+    return result, len(unique), len(urls), dead
 
 
 def build_m3u(channels, generated_at):
@@ -647,11 +641,12 @@ def main():
     cfg = build_config(merged_sites, valid_live_sources, {}, generated_at)
     m3u_text, uniq_channels = build_m3u(all_channels, generated_at)
 
-    # 生成影视仓专用纯净配置（直链探活 + 兼容结构）
-    log("生成影视仓专用配置（探活直链站点）...")
-    fongmi_cfg, fongmi_direct, fongmi_ok = build_fongmi_config(
-        merged_sites, valid_live_sources, generated_at, timeout)
-    log("  影视仓配置：直链 %d 个 → 探活可用 %d 个" % (fongmi_direct, fongmi_ok))
+    # 生成影视仓专用「配置地址清单」（完整地址 + 探活，影视仓正确格式）
+    log("生成影视仓配置地址清单（探活完整配置源）...")
+    fongmi_cfg, fongmi_total, fongmi_ok, fongmi_dead = build_fongmi_config(
+        sources, generated_at, timeout)
+    log("  影视仓清单：候选 %d 个 → 可用 %d 个，失效 %d 个" %
+        (fongmi_total, fongmi_ok, len(fongmi_dead)))
 
     # 降级保护：某一类有效源骤降（疑似网络异常）时，保留该类上次产出，避免清空
     degraded_cfg = False
@@ -707,7 +702,7 @@ def main():
             "live_dead": sum(1 for r in live_reports if not r["ok"]),
             "sites_merged": len(merged_sites),
             "live_channels": uniq_channels,
-            "fongmi_direct": fongmi_direct,
+            "fongmi_total": fongmi_total,
             "fongmi_ok": fongmi_ok,
             "degraded_cfg": degraded_cfg,
             "degraded_live": degraded_live,

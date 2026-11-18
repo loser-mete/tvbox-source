@@ -1,0 +1,130 @@
+{
+  "source": "https://gitee.com/fuchunmao/film-warehouse",
+  "note": "影视仓实测有效清单，作为种子合并",
+  "urls": [
+    {
+      "name": "🔥饭太硬1",
+      "url": "http://www.饭太硬.net/tv"
+    },
+    {
+      "name": "🔥饭太硬2",
+      "url": "http://fty.888484.xyz/tv"
+    },
+    {
+      "name": "🔥饭太硬3",
+      "url": "http://www.饭太硬.cc/tv"
+    },
+    {
+      "name": "🔥饭太硬4",
+      "url": "https://qist.wyfc.qzz.io/fty.json"
+    },
+    {
+      "name": "🌈少儿频道",
+      "url": "https://jihulab.com/ymz1231/xymz/-/raw/main/ymshaoer"
+    },
+    {
+      "name": "🌙聚合线路",
+      "url": "http://tvjuhe.mitetech.cn:5622/"
+    },
+    {
+      "name": "🍀枫斗线路",
+      "url": "http://枫斗.top/tv"
+    },
+    {
+      "name": "🚀挺好线路",
+      "url": "https://ztha.top/TVBox/thdjk.json"
+    },
+    {
+      "name": "🌻超玩家线路",
+      "url": "https://8492.kstore.space/超玩家影视仓库/影视线路/fty/ncwj"
+    },
+    {
+      "name": "🍣动漫线路",
+      "url": "https://www.yingm.cc/dm/dm.json"
+    },
+    {
+      "name": "🍉卡卡线路",
+      "url": "https://jikefuye.cn/tvbox.json"
+    },
+    {
+      "name": "🍋酷喵1",
+      "url": "https://15487.kstore.space/%E9%85%B72.txt"
+    },
+    {
+      "name": "🍋酷喵2",
+      "url": "https://15487.kstore.space/%E9%85%B71.txt"
+    },
+    {
+      "name": "🥕王二小",
+      "url": "https://9280.kstore.vip/newwex.json"
+    },
+    {
+      "name": "🥐小马线路",
+      "url": "https://szyyds.cn/tv/x.json"
+    },
+    {
+      "name": "🐈哈基米",
+      "url": "https://17264.kstore.space/哈基米.png"
+    },
+    {
+      "name": "🥥凯速潇洒线路",
+      "url": "https://9877.kstore.space/sun.json"
+    },
+    {
+      "name": "🍝安忆",
+      "url": "https://cnb.cool/ayrjk/tvbox/-/git/raw/main/api.json"
+    },
+    {
+      "name": "🍜豆半线路",
+      "url": "https://cnb.cool/luotao-dev/tvbo/-/git/raw/main/fxapi.json"
+    },
+    {
+      "name": "🍺嗨哥魔改线路",
+      "url": "https://api.hgyx.vip/hgyx.json"
+    },
+    {
+      "name": "🦆裤佬线路",
+      "url": "https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg"
+    },
+    {
+      "name": "🌴东篱1",
+      "url": "https://gh-proxy.org/https://raw.githubusercontent.com/chitue/dongliTV/main/api.json"
+    },
+    {
+      "name": "🌴东篱2",
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/chitue/dongliTV/main/api.json"
+    },
+    {
+      "name": "🦊盒子迷线路",
+      "url": "https://盒子迷.top/禁止贩卖"
+    },
+    {
+      "name": "🐵半糖仙人",
+      "url": "https://gh-proxy.org/https://raw.githubusercontent.com/ph7368/ok/main/极客小盒.json"
+    },
+    {
+      "name": "🐻骚零线路",
+      "url": "https://play.iptv365.org/骚零/api.json"
+    },
+    {
+      "name": "🦅香雅情线路",
+      "url": "https://play.iptv365.org/香雅情/api.json"
+    },
+    {
+      "name": "🍦南风线路",
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json"
+    },
+    {
+      "name": "🐼戏曲线路",
+      "url": "http://mzrjk.top/唱戏"
+    },
+    {
+      "name": "🍷天神IY线路",
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/IY-CPU/IY/main/%E5%A4%A9%E7%A5%9EIY.png"
+    },
+    {
+      "name": "🐮菜妮丝",
+      "url": "https://tv.xn--yhqu5zs87a.top"
+    }
+  ]
+}
