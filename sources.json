@@ -1,0 +1,73 @@
+{
+  "_comment": "TVBox 候选源清单。update.py 每天探活这些地址：能下载且结构合法的保留，失效的自动剔除。configs=完整配置源(聚合其sites/lives)，lives=直播订阅源(m3u/txt)。",
+  "configs": [
+    {
+      "name": "香雅情",
+      "url": "https://raw.githubusercontent.com/xyq254245/xyqonlinerule/main/XYQTVBox.json",
+      "home": "https://github.com/xyq254245/xyqonlinerule"
+    },
+    {
+      "name": "纽特新片",
+      "url": "https://raw.githubusercontent.com/Newtxin/tvbox/main/2.json",
+      "home": "https://github.com/Newtxin/tvbox"
+    },
+    {
+      "name": "高天流云",
+      "url": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/0825.json",
+      "home": "https://github.com/gaotianliuyun/gao"
+    },
+    {
+      "name": "南风XC",
+      "url": "https://raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json",
+      "home": "https://github.com/yoursmile66/TVBox"
+    },
+    {
+      "name": "月光宝盒",
+      "url": "https://jihulab.com/bh666/YGBH/-/raw/main/ygbox.json",
+      "home": "https://jihulab.com/bh666/YGBH"
+    },
+    {
+      "name": "多仓合一",
+      "url": "https://raw.githubusercontent.com/noimank/tvbox/master/tvboxmuti.json",
+      "home": "https://github.com/noimank/tvbox"
+    },
+    {
+      "name": "胜寒",
+      "url": "https://raw.githubusercontent.com/hanhan8127/TVBox/main/hanXC.json",
+      "home": "https://github.com/hanhan8127/TVBox"
+    },
+    {
+      "name": "文本TV",
+      "url": "https://raw.githubusercontent.com/txtvv/txtv/main/tvbox/0326.json",
+      "home": "https://github.com/txtvv/txtv"
+    }
+  ],
+  "lives": [
+    {
+      "name": "大嘴巴IPTV",
+      "url": "https://raw.githubusercontent.com/big-mouth-cn/tv/main/iptv-ok.m3u",
+      "fmt": "m3u",
+      "epg": "https://epg.v1.mk/json?ch={name}&date={date}"
+    },
+    {
+      "name": "天幕直播",
+      "url": "https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+      "fmt": "txt",
+      "epg": "https://epg.v1.mk/json?ch={name}&date={date}"
+    },
+    {
+      "name": "APTV",
+      "url": "https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u",
+      "fmt": "m3u",
+      "epg": ""
+    }
+  ],
+  "settings": {
+    "timeout": 18,
+    "max_workers": 8,
+    "min_config_bytes": 300,
+    "min_live_channels": 3,
+    "keep_history_days": 30,
+    "fail_threshold": 3
+  }
+}
