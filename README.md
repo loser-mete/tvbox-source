@@ -12,7 +12,29 @@
 > 影视仓的「配置地址」要的是**配置地址清单** `{"urls":[{"name","url"}]}`（每条指向一个完整的带 spider 的原始配置），
 > 不是把站点拆解重组的单仓 JSON。填错格式就会提示「接口无效」。
 
-### ✅ 影视仓 / FongMi 专用地址（推荐）
+### ⭐ 我的精选（推荐 · 站点归类版）
+想要**站点少而精、按类型归好类**的话，用这个——25 个实测好站按内容分成标签页，含直播：
+```
+https://raw.githubusercontent.com/loser-mete/tvbox-source/main/myfav.json
+```
+国内镜像（主地址打不开时试）：
+```
+https://ghfast.top/https://raw.githubusercontent.com/loser-mete/tvbox-source/main/myfav.json
+https://cdn.jsdelivr.net/gh/loser-mete/tvbox-source@main/myfav.json
+```
+结构一览：
+
+| 分组（影视仓标签页） | 内容 |
+|------|------|
+| 🔥影视精选 | 15 个实测可用的综合影视直链站（魔都/天涯/非凡/360/极速/闪电/无尽…） |
+| 📺短剧专区 | 淘片短剧线路 |
+| ⚡备用线路 | 8 个多源交叉收录的老牌站（电影天堂/量子/暴风/爱坤…） |
+| 🌈动漫 / 🧒少儿 / 📺短剧专线 | 垂直专项订源阅，自带 spider，影视仓正常解析 |
+| 📡直播 | APTV / 天幕 / 大嘴巴，走国内镜像，带 EPG |
+
+> 所有点播站点均为 **HTTP 直链**（苹果CMS标准接口），影视仓原生支持、无需 spider，不会「接口无效」。
+
+### ✅ 影视仓 / FongMi 完整源清单（站点多、求全用这个）
 ```
 https://raw.githubusercontent.com/loser-mete/tvbox-source/main/fongmi.json
 ```
