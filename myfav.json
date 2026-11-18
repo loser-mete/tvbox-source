@@ -1,12 +1,8 @@
 {
-  "urls": {
-    "🌈动漫专线": "https://www.yingm.cc/dm/dm.json",
-    "🧒少儿频道": "https://jihulab.com/ymz1231/xymz/-/raw/main/ymshaoer",
-    "📺短剧专线": "http://box.ufuzi.com/tv/qq/%E7%9F%AD%E5%89%A7%E9%A2%91%E9%81%93/api.json"
-  },
+  "urls": {},
   "sites": [
     {
-      "key": "魔都资源",
+      "key": "魔都资源@🔥影视精选",
       "name": "🎬魔都资源",
       "type": 1,
       "api": "https://www.mdzyapi.com/api.php/provide/vod/?ac=list",
@@ -16,7 +12,7 @@
       "group": "🔥影视精选"
     },
     {
-      "key": "天涯资源",
+      "key": "天涯资源@🔥影视精选",
       "name": "🎬天涯资源",
       "type": 1,
       "api": "https://ty.tyyszy5.com/api.php/provide/vod/?ac=list",
@@ -26,7 +22,7 @@
       "group": "🔥影视精选"
     },
     {
-      "key": "非凡资源",
+      "key": "非凡资源@🔥影视精选",
       "name": "🎬非凡资源",
       "type": 1,
       "api": "https://ffzy.tv/api.php/provide/vod/",
@@ -36,7 +32,7 @@
       "group": "🔥影视精选"
     },
     {
-      "key": "360资源",
+      "key": "360资源@🔥影视精选",
       "name": "🎬360资源",
       "type": 1,
       "api": "https://360zy.com/api.php/provide/vod/",
@@ -46,7 +42,7 @@
       "group": "🔥影视精选"
     },
     {
-      "key": "极速资源",
+      "key": "极速资源@🔥影视精选",
       "name": "🎬极速资源",
       "type": 1,
       "api": "https://jszyapi.com/api.php/provide/vod/at/json",
@@ -56,7 +52,7 @@
       "group": "🔥影视精选"
     },
     {
-      "key": "闪电资源",
+      "key": "闪电资源@🔥影视精选",
       "name": "🎬闪电资源",
       "type": 1,
       "api": "https://sdzyapi.com/api.php/provide/vod/?ac=list",
@@ -66,7 +62,7 @@
       "group": "🔥影视精选"
     },
     {
-      "key": "无尽资源",
+      "key": "无尽资源@🔥影视精选",
       "name": "🎬无尽资源",
       "type": 1,
       "api": "https://api.wujinapi.me/api.php/provide/vod/?ac=list",
@@ -76,17 +72,7 @@
       "group": "🔥影视精选"
     },
     {
-      "key": "CK资源",
-      "name": "🎬CK资源",
-      "type": 1,
-      "api": "https://ckzy.me/api.php/provide/vod/?ac=list",
-      "searchable": 1,
-      "quickSearch": 0,
-      "filterable": 1,
-      "group": "🔥影视精选"
-    },
-    {
-      "key": "光速资源",
+      "key": "光速资源@🔥影视精选",
       "name": "🎬光速资源",
       "type": 1,
       "api": "https://api.guangsuapi.com/api.php/provide/vod/from/guangsu/m3u8",
@@ -96,27 +82,7 @@
       "group": "🔥影视精选"
     },
     {
-      "key": "黑木耳",
-      "name": "🎬黑木耳",
-      "type": 1,
-      "api": "https://json02.heimuer.xyz/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 0,
-      "filterable": 1,
-      "group": "🔥影视精选"
-    },
-    {
-      "key": "创享资源",
-      "name": "🎬创享资源",
-      "type": 1,
-      "api": "https://ys.cxkjg.cn/api/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 0,
-      "filterable": 1,
-      "group": "🔥影视精选"
-    },
-    {
-      "key": "优质资源",
+      "key": "优质资源@🔥影视精选",
       "name": "🎬优质资源",
       "type": 1,
       "api": "https://api.yyzy-tv.vip/inc/apijson.php",
@@ -126,7 +92,7 @@
       "group": "🔥影视精选"
     },
     {
-      "key": "百度资源",
+      "key": "百度资源@🔥影视精选",
       "name": "🎬百度资源",
       "type": 1,
       "api": "https://api.apibdzy.com/api.php/provide/vod/?ac=list",
@@ -136,27 +102,77 @@
       "group": "🔥影视精选"
     },
     {
-      "key": "鱼乐资源",
-      "name": "🎬鱼乐资源",
+      "key": "创享资源@🔥影视精选",
+      "name": "🎬创享资源",
       "type": 1,
-      "api": "https://api.yulecj.com/api.php/provide/vod/?ac=list",
+      "api": "https://ys.cxkjg.cn/api/provide/vod/",
       "searchable": 1,
       "quickSearch": 0,
       "filterable": 1,
       "group": "🔥影视精选"
     },
     {
-      "key": "卧龙资源",
-      "name": "🎬卧龙资源",
+      "key": "黑木耳@🔥影视精选",
+      "name": "🎬黑木耳",
       "type": 1,
-      "api": "https://collect.wolongzyw.com/api.php/provide/vod/",
+      "api": "https://json02.heimuer.xyz/api.php/provide/vod/",
       "searchable": 0,
       "quickSearch": 0,
-      "filterable": 0,
+      "filterable": 1,
       "group": "🔥影视精选"
     },
     {
-      "key": "淘片短剧",
+      "key": "魔都动漫@🌈动漫专区",
+      "name": "🌈魔都动漫",
+      "type": 1,
+      "api": "https://www.mdzyapi.com/api.php/provide/vod/?ac=list",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 1,
+      "group": "🌈动漫专区"
+    },
+    {
+      "key": "天涯动漫@🌈动漫专区",
+      "name": "🌈天涯动漫",
+      "type": 1,
+      "api": "https://ty.tyyszy5.com/api.php/provide/vod/?ac=list",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 1,
+      "group": "🌈动漫专区"
+    },
+    {
+      "key": "闪电动漫@🌈动漫专区",
+      "name": "🌈闪电动漫",
+      "type": 1,
+      "api": "https://sdzyapi.com/api.php/provide/vod/?ac=list",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 1,
+      "group": "🌈动漫专区"
+    },
+    {
+      "key": "无尽动漫@🌈动漫专区",
+      "name": "🌈无尽动漫",
+      "type": 1,
+      "api": "https://api.wujinapi.me/api.php/provide/vod/?ac=list",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 1,
+      "group": "🌈动漫专区"
+    },
+    {
+      "key": "百度动漫@🌈动漫专区",
+      "name": "🌈百度动漫",
+      "type": 1,
+      "api": "https://api.apibdzy.com/api.php/provide/vod/?ac=list",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 1,
+      "group": "🌈动漫专区"
+    },
+    {
+      "key": "淘片短剧@📺短剧专区",
       "name": "📺淘片短剧",
       "type": 1,
       "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
@@ -166,93 +182,113 @@
       "group": "📺短剧专区"
     },
     {
-      "key": "淘片线路",
-      "name": "📺淘片线路",
+      "key": "魔都短剧@📺短剧专区",
+      "name": "📺魔都短剧",
       "type": 1,
-      "api": "https://taopianapi.com/cjapi/mc10/vod/xml.html",
+      "api": "https://www.mdzyapi.com/api.php/provide/vod/?ac=list",
       "searchable": 0,
       "quickSearch": 0,
-      "filterable": 0,
+      "filterable": 1,
       "group": "📺短剧专区"
     },
     {
-      "key": "电影天堂",
+      "key": "360短剧@📺短剧专区",
+      "name": "📺360短剧",
+      "type": 1,
+      "api": "https://360zy.com/api.php/provide/vod/",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 1,
+      "group": "📺短剧专区"
+    },
+    {
+      "key": "极速短剧@📺短剧专区",
+      "name": "📺极速短剧",
+      "type": 1,
+      "api": "https://jszyapi.com/api.php/provide/vod/at/json",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 1,
+      "group": "📺短剧专区"
+    },
+    {
+      "key": "无尽儿童@🧒少儿儿童",
+      "name": "🧒无尽儿童",
+      "type": 1,
+      "api": "https://api.wujinapi.me/api.php/provide/vod/?ac=list",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 1,
+      "group": "🧒少儿儿童"
+    },
+    {
+      "key": "电影天堂@⚡备用线路",
       "name": "⚡电影天堂",
       "type": 1,
       "api": "https://caiji.dyttzyapi.com/api.php/provide/vod/",
       "searchable": 0,
       "quickSearch": 0,
-      "filterable": 0,
+      "filterable": 1,
       "group": "⚡备用线路"
     },
     {
-      "key": "量子资源",
+      "key": "量子资源@⚡备用线路",
       "name": "⚡量子资源",
       "type": 1,
       "api": "https://cj.lziapi.com/api.php/provide/vod/",
       "searchable": 0,
       "quickSearch": 0,
-      "filterable": 0,
+      "filterable": 1,
       "group": "⚡备用线路"
     },
     {
-      "key": "暴风资源",
+      "key": "暴风资源@⚡备用线路",
       "name": "⚡暴风资源",
       "type": 1,
       "api": "https://bfzyapi.com/api.php/provide/vod/",
       "searchable": 0,
       "quickSearch": 0,
-      "filterable": 0,
+      "filterable": 1,
       "group": "⚡备用线路"
     },
     {
-      "key": "爱坤资源",
+      "key": "爱坤资源@⚡备用线路",
       "name": "⚡爱坤资源",
       "type": 1,
       "api": "https://ikunzyapi.com/api.php/provide/vod/",
       "searchable": 0,
       "quickSearch": 0,
-      "filterable": 0,
+      "filterable": 1,
       "group": "⚡备用线路"
     },
     {
-      "key": "新浪资源",
+      "key": "新浪资源@⚡备用线路",
       "name": "⚡新浪资源",
       "type": 1,
       "api": "https://api.xinlangapi.com/api.php/provide/vod/",
       "searchable": 0,
       "quickSearch": 0,
-      "filterable": 0,
+      "filterable": 1,
       "group": "⚡备用线路"
     },
     {
-      "key": "天空资源",
+      "key": "天空资源@⚡备用线路",
       "name": "⚡天空资源",
       "type": 1,
       "api": "https://m3u8.tiankongapi.com/api.php/provide/vod/",
       "searchable": 0,
       "quickSearch": 0,
-      "filterable": 0,
+      "filterable": 1,
       "group": "⚡备用线路"
     },
     {
-      "key": "索尼资源",
+      "key": "索尼资源@⚡备用线路",
       "name": "⚡索尼资源",
       "type": 1,
       "api": "https://suoniapi.com/api.php/provide/vod/",
       "searchable": 0,
       "quickSearch": 0,
-      "filterable": 0,
-      "group": "⚡备用线路"
-    },
-    {
-      "key": "vn 资源",
-      "name": "⚡ vn 资源",
-      "type": 1,
-      "api": "https://api.wujinapi.net/api.php/provide/vod/",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 0,
+      "filterable": 1,
       "group": "⚡备用线路"
     }
   ],
