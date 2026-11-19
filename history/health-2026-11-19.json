@@ -1,0 +1,193 @@
+{
+  "date": "2026-11-19",
+  "health": {
+    "generated_at": "2026-11-19 10:36:25 UTC+8",
+    "degraded": false,
+    "summary": {
+      "config_total": 8,
+      "config_ok": 0,
+      "config_dead": 8,
+      "live_total": 3,
+      "live_ok": 0,
+      "live_dead": 3,
+      "sites_merged": 0,
+      "live_channels": 0,
+      "fongmi_total": 39,
+      "fongmi_ok": 26,
+      "degraded_cfg": false,
+      "degraded_live": false
+    },
+    "configs": [
+      {
+        "name": "南风XC",
+        "url": "https://raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json",
+        "kind": "config",
+        "ok": false,
+        "sites": 0,
+        "lives": 0,
+        "bytes": 0,
+        "ms": 148085,
+        "status": 0,
+        "reason": "URLError: <urlopen error timed out> [网络抖动,不计入剔除]",
+        "retryable": true,
+        "adopted": false
+      },
+      {
+        "name": "多仓合一",
+        "url": "https://raw.githubusercontent.com/noimank/tvbox/master/tvboxmuti.json",
+        "kind": "config",
+        "ok": false,
+        "sites": 0,
+        "lives": 0,
+        "bytes": 0,
+        "ms": 148053,
+        "status": 0,
+        "reason": "URLError: <urlopen error timed out> [网络抖动,不计入剔除]",
+        "retryable": true,
+        "adopted": false
+      },
+      {
+        "name": "文本TV",
+        "url": "https://raw.githubusercontent.com/txtvv/txtv/main/tvbox/0326.json",
+        "kind": "config",
+        "ok": false,
+        "sites": 0,
+        "lives": 0,
+        "bytes": 0,
+        "ms": 148081,
+        "status": 0,
+        "reason": "URLError: <urlopen error timed out> [网络抖动,不计入剔除]",
+        "retryable": true,
+        "adopted": false
+      },
+      {
+        "name": "月光宝盒",
+        "url": "https://jihulab.com/bh666/YGBH/-/raw/main/ygbox.json",
+        "kind": "config",
+        "ok": false,
+        "sites": 0,
+        "lives": 0,
+        "bytes": 109167,
+        "ms": 368,
+        "status": 200,
+        "reason": "JSON解析失败(Extra data: line 1 column 22 (char 21)) [连续失败9/3]",
+        "retryable": false,
+        "adopted": false
+      },
+      {
+        "name": "纽特新片",
+        "url": "https://raw.githubusercontent.com/Newtxin/tvbox/main/2.json",
+        "kind": "config",
+        "ok": false,
+        "sites": 0,
+        "lives": 0,
+        "bytes": 0,
+        "ms": 148024,
+        "status": 0,
+        "reason": "URLError: <urlopen error timed out> [网络抖动,不计入剔除]",
+        "retryable": true,
+        "adopted": false
+      },
+      {
+        "name": "胜寒",
+        "url": "https://raw.githubusercontent.com/hanhan8127/TVBox/main/hanXC.json",
+        "kind": "config",
+        "ok": false,
+        "sites": 0,
+        "lives": 0,
+        "bytes": 0,
+        "ms": 148051,
+        "status": 0,
+        "reason": "URLError: <urlopen error timed out> [网络抖动,不计入剔除]",
+        "retryable": true,
+        "adopted": false
+      },
+      {
+        "name": "香雅情",
+        "url": "https://raw.githubusercontent.com/xyq254245/xyqonlinerule/main/XYQTVBox.json",
+        "kind": "config",
+        "ok": false,
+        "sites": 0,
+        "lives": 0,
+        "bytes": 0,
+        "ms": 148134,
+        "status": 0,
+        "reason": "URLError: <urlopen error timed out> [网络抖动,不计入剔除]",
+        "retryable": true,
+        "adopted": false
+      },
+      {
+        "name": "高天流云",
+        "url": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/0825.json",
+        "kind": "config",
+        "ok": false,
+        "sites": 0,
+        "lives": 0,
+        "bytes": 0,
+        "ms": 184878,
+        "status": 0,
+        "reason": "URLError: <urlopen error timed out> [网络抖动,不计入剔除]",
+        "retryable": true,
+        "adopted": false
+      }
+    ],
+    "lives": [
+      {
+        "name": "APTV",
+        "url": "https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u",
+        "kind": "live",
+        "ok": false,
+        "channels": 0,
+        "bytes": 0,
+        "ms": 219695,
+        "status": 0,
+        "reason": "URLError: <urlopen error timed out> [网络抖动,不计入剔除]",
+        "retryable": true,
+        "adopted": false
+      },
+      {
+        "name": "大嘴巴IPTV",
+        "url": "https://raw.githubusercontent.com/big-mouth-cn/tv/main/iptv-ok.m3u",
+        "kind": "live",
+        "ok": false,
+        "channels": 0,
+        "bytes": 0,
+        "ms": 219696,
+        "status": 0,
+        "reason": "URLError: <urlopen error timed out> [网络抖动,不计入剔除]",
+        "retryable": true,
+        "adopted": false
+      },
+      {
+        "name": "天幕直播",
+        "url": "https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+        "kind": "live",
+        "ok": false,
+        "channels": 0,
+        "bytes": 0,
+        "ms": 219695,
+        "status": 0,
+        "reason": "URLError: <urlopen error timed out> [网络抖动,不计入剔除]",
+        "retryable": true,
+        "adopted": false
+      }
+    ],
+    "removed": [
+      {
+        "name": "月光宝盒",
+        "url": "https://jihulab.com/bh666/YGBH/-/raw/main/ygbox.json",
+        "kind": "config",
+        "reason": "JSON解析失败(Extra data: line 1 column 22 (char 21)) [连续失败9/3]"
+      },
+      {
+        "name": "南风XC",
+        "url": "https://raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json",
+        "kind": "config",
+        "reason": "URLError: <urlopen error timed out> [网络抖动,不计入剔除]"
+      }
+    ],
+    "observing": []
+  },
+  "site_count": 0,
+  "live_count": 0
+}
