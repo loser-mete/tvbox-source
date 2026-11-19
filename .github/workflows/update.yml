@@ -1,9 +1,8 @@
 name: 每日更新 TVBox 源
 
 on:
-  # 每天 UTC 00:00 = 北京时间 08:00 自动更新
-  schedule:
-    - cron: '0 0 * * *'
+  # 定时更新已迁移到 WorkBuddy 定时任务（每 3 天北京时间 08:00）
+  # 这里不再设置 schedule，避免与 WorkBuddy 任务双重提交冲突
   # 允许手动点击触发
   workflow_dispatch:
   # 候选清单变更时也触发一次
