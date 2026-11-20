@@ -1,0 +1,193 @@
+{
+  "date": "2026-11-20",
+  "health": {
+    "generated_at": "2026-11-20 10:54:52 UTC+8",
+    "degraded": false,
+    "summary": {
+      "config_total": 8,
+      "config_ok": 6,
+      "config_dead": 2,
+      "live_total": 3,
+      "live_ok": 3,
+      "live_dead": 0,
+      "sites_merged": 294,
+      "live_channels": 847,
+      "fongmi_total": 39,
+      "fongmi_ok": 26,
+      "degraded_cfg": false,
+      "degraded_live": false
+    },
+    "configs": [
+      {
+        "name": "南风XC",
+        "url": "https://raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json",
+        "kind": "config",
+        "ok": false,
+        "sites": 0,
+        "lives": 0,
+        "bytes": 68233,
+        "ms": 1033,
+        "status": 200,
+        "reason": "JSON解析失败(Extra data: line 1 column 15 (char 14)) [连续失败8/3]",
+        "retryable": false,
+        "adopted": false
+      },
+      {
+        "name": "多仓合一",
+        "url": "https://raw.githubusercontent.com/noimank/tvbox/master/tvboxmuti.json",
+        "kind": "config",
+        "ok": true,
+        "sites": 744,
+        "lives": 0,
+        "bytes": 1966,
+        "ms": 574,
+        "status": 200,
+        "reason": "多仓展开7/14",
+        "retryable": false,
+        "adopted": true
+      },
+      {
+        "name": "文本TV",
+        "url": "https://raw.githubusercontent.com/txtvv/txtv/main/tvbox/0326.json",
+        "kind": "config",
+        "ok": true,
+        "sites": 2,
+        "lives": 1,
+        "bytes": 2508,
+        "ms": 2363,
+        "status": 200,
+        "reason": "",
+        "retryable": false,
+        "adopted": true
+      },
+      {
+        "name": "月光宝盒",
+        "url": "https://jihulab.com/bh666/YGBH/-/raw/main/ygbox.json",
+        "kind": "config",
+        "ok": false,
+        "sites": 0,
+        "lives": 0,
+        "bytes": 109167,
+        "ms": 375,
+        "status": 200,
+        "reason": "JSON解析失败(Extra data: line 1 column 22 (char 21)) [连续失败10/3]",
+        "retryable": false,
+        "adopted": false
+      },
+      {
+        "name": "纽特新片",
+        "url": "https://raw.githubusercontent.com/Newtxin/tvbox/main/2.json",
+        "kind": "config",
+        "ok": true,
+        "sites": 69,
+        "lives": 1,
+        "bytes": 51172,
+        "ms": 1155,
+        "status": 200,
+        "reason": "",
+        "retryable": false,
+        "adopted": true
+      },
+      {
+        "name": "胜寒",
+        "url": "https://raw.githubusercontent.com/hanhan8127/TVBox/main/hanXC.json",
+        "kind": "config",
+        "ok": true,
+        "sites": 43,
+        "lives": 1,
+        "bytes": 23457,
+        "ms": 519,
+        "status": 200,
+        "reason": "",
+        "retryable": false,
+        "adopted": true
+      },
+      {
+        "name": "香雅情",
+        "url": "https://raw.githubusercontent.com/xyq254245/xyqonlinerule/main/XYQTVBox.json",
+        "kind": "config",
+        "ok": true,
+        "sites": 48,
+        "lives": 3,
+        "bytes": 24822,
+        "ms": 537,
+        "status": 200,
+        "reason": "",
+        "retryable": false,
+        "adopted": true
+      },
+      {
+        "name": "高天流云",
+        "url": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/0825.json",
+        "kind": "config",
+        "ok": true,
+        "sites": 135,
+        "lives": 5,
+        "bytes": 27518,
+        "ms": 543,
+        "status": 200,
+        "reason": "",
+        "retryable": false,
+        "adopted": true
+      }
+    ],
+    "lives": [
+      {
+        "name": "APTV",
+        "url": "https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u",
+        "kind": "live",
+        "ok": true,
+        "channels": 120,
+        "bytes": 21971,
+        "ms": 3199,
+        "status": 200,
+        "reason": "",
+        "retryable": false,
+        "adopted": true
+      },
+      {
+        "name": "大嘴巴IPTV",
+        "url": "https://raw.githubusercontent.com/big-mouth-cn/tv/main/iptv-ok.m3u",
+        "kind": "live",
+        "ok": true,
+        "channels": 747,
+        "bytes": 195150,
+        "ms": 1235,
+        "status": 200,
+        "reason": "",
+        "retryable": false,
+        "adopted": true
+      },
+      {
+        "name": "天幕直播",
+        "url": "https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+        "kind": "live",
+        "ok": true,
+        "channels": 34,
+        "bytes": 2501,
+        "ms": 340,
+        "status": 200,
+        "reason": "",
+        "retryable": false,
+        "adopted": true
+      }
+    ],
+    "removed": [
+      {
+        "name": "月光宝盒",
+        "url": "https://jihulab.com/bh666/YGBH/-/raw/main/ygbox.json",
+        "kind": "config",
+        "reason": "JSON解析失败(Extra data: line 1 column 22 (char 21)) [连续失败10/3]"
+      },
+      {
+        "name": "南风XC",
+        "url": "https://raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json",
+        "kind": "config",
+        "reason": "JSON解析失败(Extra data: line 1 column 15 (char 14)) [连续失败8/3]"
+      }
+    ],
+    "observing": []
+  },
+  "site_count": 294,
+  "live_count": 3
+}
