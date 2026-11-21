@@ -19,11 +19,13 @@
 ```
 https://raw.githubusercontent.com/loser-mete/tvbox-source/main/myfav.json
 ```
-国内镜像（主地址打不开时试，**推荐用这个**，jar 也走镜像更快）：
+国内镜像（2026-11-21 实测：**json 与 spider.jar 都能完整加载**，移动宽带优先用这三个，从上往下依次试）：
 ```
 https://ghfast.top/https://raw.githubusercontent.com/loser-mete/tvbox-source/main/myfav.json
-https://cdn.jsdelivr.net/gh/loser-mete/tvbox-source@main/myfav.json
+https://gh-proxy.com/https://raw.githubusercontent.com/loser-mete/tvbox-source/main/myfav.json
+https://cdn.gh-proxy.com/https://raw.githubusercontent.com/loser-mete/tvbox-source/main/myfav.json
 ```
+> ⚠️ **别用 jsdelivr 系列**（`cdn.jsdelivr.net` / `fastly.jsdelivr.net` / `gcore.jsdelivr.net` / `cdn.jsdmirror.com`）：实测这些镜像的 `myfav.json` 能返回，但 `spider.jar` 一律 **403**，配置能打开、苹果APP 等 csp 站点却全是空的。`ghproxy.net` 的 jar 会中途断流导致 md5 校验失败。以上三个镜像的 jar 均已实测 1700116 字节、md5 一致。
 结构一览：
 
 | 分组（影视仓标签页） | 内容 |
