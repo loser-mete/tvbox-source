@@ -19,13 +19,25 @@
 ```
 https://raw.githubusercontent.com/loser-mete/tvbox-source/main/myfav.json
 ```
-国内镜像（2026-11-21 实测：**json 与 spider.jar 都能完整加载**，移动宽带优先用这三个，从上往下依次试）：
+### 🇨🇳 国内代理地址（移动宽带优先用这组 · 2026-11-23 实测）
+
+判据：`myfav.json` 能解析 **且** 同目录 `spider.jar` 能完整下载（1700116 字节、md5=`decb609b…a252`）。只满足前者会导致「配置能打开但苹果APP等 csp 站点全空」。
+
+**首选（本机实测最快、jar 完整，从上往下依次试）：**
 ```
-https://ghfast.top/https://raw.githubusercontent.com/loser-mete/tvbox-source/main/myfav.json
 https://gh-proxy.com/https://raw.githubusercontent.com/loser-mete/tvbox-source/main/myfav.json
+https://gh-proxy.org/https://raw.githubusercontent.com/loser-mete/tvbox-source/main/myfav.json
 https://cdn.gh-proxy.com/https://raw.githubusercontent.com/loser-mete/tvbox-source/main/myfav.json
+https://ghfast.top/https://raw.githubusercontent.com/loser-mete/tvbox-source/main/myfav.json
 ```
-> ⚠️ **别用 jsdelivr 系列**（`cdn.jsdelivr.net` / `fastly.jsdelivr.net` / `gcore.jsdelivr.net` / `cdn.jsdmirror.com`）：实测这些镜像的 `myfav.json` 能返回，但 `spider.jar` 一律 **403**，配置能打开、苹果APP 等 csp 站点却全是空的。`ghproxy.net` 的 jar 会中途断流导致 md5 校验失败。以上三个镜像的 jar 均已实测 1700116 字节、md5 一致。
+
+> ⚠️ **移动宽带请自己复测一次**：不同运营商/地区对镜像的解析不一样。仓库里放了零依赖测速脚本，在你的网络里跑一下，它会按真实速度排出能用的一串：
+> ```bash
+> python check_mirrors.py
+> ```
+> 判据是真实读取字节 + 校验 jar 的 md5，不是只看 HTTP 200（假 200/0B 是常见坑）。
+
+> ⚠️ **已排除的镜像**：`ghproxy.net` 的 jar 虽能下完整但要 48 秒（客户端基本会超时）；`jsdelivr` 系列（`cdn.jsdelivr.net` 等）jar 一律 **403**；`down.nigx.cn` 返回网页；`gh.xiu.org` / `gh.llkk.cc` / `github.moeyy.xyz` 当前 502。GitHub 原站在部分国内线路（含本机）直接断连。
 结构一览：
 
 | 分组（影视仓标签页） | 内容 |
@@ -46,10 +58,11 @@ https://cdn.gh-proxy.com/https://raw.githubusercontent.com/loser-mete/tvbox-sour
 ```
 https://raw.githubusercontent.com/loser-mete/tvbox-source/main/fongmi.json
 ```
-国内镜像（主地址打不开时试）：
+国内镜像（主地址打不开时试，按实测速度排序）：
 ```
+https://gh-proxy.com/https://raw.githubusercontent.com/loser-mete/tvbox-source/main/fongmi.json
+https://gh-proxy.org/https://raw.githubusercontent.com/loser-mete/tvbox-source/main/fongmi.json
 https://ghfast.top/https://raw.githubusercontent.com/loser-mete/tvbox-source/main/fongmi.json
-https://cdn.jsdelivr.net/gh/loser-mete/tvbox-source@main/fongmi.json
 ```
 这个文件是 **26 条实测可用的完整配置源清单**，每天自动探活剔除失效源。每个源保持原样（含 spider.jar / drpy 脚本），影视仓能正常解析。
 
@@ -63,9 +76,9 @@ https://raw.githubusercontent.com/loser-mete/tvbox-source/main/config.json
 
 ### 国内镜像地址（如主地址打不开，依次尝试）
 ```
-https://ghfast.top/https://raw.githubusercontent.com/loser-mete/tvbox-source/main/config.json
 https://gh-proxy.com/https://raw.githubusercontent.com/loser-mete/tvbox-source/main/config.json
-https://cdn.jsdelivr.net/gh/loser-mete/tvbox-source@main/config.json
+https://gh-proxy.org/https://raw.githubusercontent.com/loser-mete/tvbox-source/main/config.json
+https://ghfast.top/https://raw.githubusercontent.com/loser-mete/tvbox-source/main/config.json
 ```
 
 > 镜像地址会随网络环境变化而失效。**建议把上面几个都试一遍，哪个能用用哪个**。也可以关注本仓库的 Issues/更新。
@@ -114,6 +127,7 @@ https://raw.githubusercontent.com/loser-mete/tvbox-source/main/all.m3u
 | `sources.json` | 候选源清单（想增删源改这里） |
 | `state.json` | 连续失败计数（脚本自动维护，勿手改） |
 | `update.py` | 更新脚本（零第三方依赖） |
+| `check_mirrors.py` | 国内镜像测速：实测 json + spider.jar 能否完整加载并排出可用地址（在你自己的网络里跑) |
 | `history/` | 最近 30 天历史快照 |
 
 ---
