@@ -40,6 +40,7 @@ LIVE_TXT_OUT = os.path.join(BASE_DIR, "all.txt")
 HEALTH_OUT = os.path.join(BASE_DIR, "health.json")
 STATE_FILE = os.path.join(BASE_DIR, "state.json")
 HISTORY_DIR = os.path.join(BASE_DIR, "history")
+DISCOVERED_FILE = os.path.join(BASE_DIR, "discovered.json")
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 TZ_CN = timezone(timedelta(hours=8))
@@ -534,6 +535,85 @@ def load_state():
         return {}
 
 
+def discovery_is_stale():
+    """发现池缺失或非当日生成 -> 需要刷新（每天一次，避免每次探活都全量发现）。"""
+    if not os.path.exists(DISCOVERED_FILE):
+        return True
+    try:
+        with open(DISCOVERED_FILE, "r", encoding="utf-8") as f:
+            d = json.load(f)
+        gen = str(d.get("generated_at", ""))
+        return not gen.startswith(now_cn().strftime("%Y-%m-%d"))
+    except Exception:
+        return True
+
+
+def maybe_refresh_discovery(enabled, timeout):
+    """若启用且发现池过期，则运行 discover 重新发现。发现失败不影响主流程。"""
+    if not enabled or not discovery_is_stale():
+        return
+    if not os.path.exists(os.path.join(BASE_DIR, "discover.py")):
+        return
+    log("发现池过期，运行 discover.py 重新发现知名源 ...")
+    try:
+        import subprocess
+        proc = subprocess.run([sys.executable, os.path.join(BASE_DIR, "discover.py")],
+                              cwd=BASE_DIR, capture_output=True, text=True,
+                              timeout=max(180, timeout * 12))
+        out = (proc.stdout or "") + (proc.stderr or "")
+        for ln in out.splitlines():
+            if "[发现]" in ln:
+                log(ln.strip())
+        if proc.returncode != 0:
+            log("⚠ discover.py 退出码 %d，沿用上次发现池（若有）" % proc.returncode)
+    except Exception as e:
+        log("⚠ 自动发现失败：%s，沿用上次发现池（若有）" % str(e)[:100])
+
+
+def load_discovered():
+    """读取 discover.py 产出的 discovered.json（知名源发现结果）。
+
+    返回 (config_items, live_items, direct_sites, meta):
+      - config_items: 发现到的完整配置地址 -> 并入配置源探活池
+      - live_items:   发现到的直播订阅地址 -> 并入直播源探活池
+      - direct_sites: 发现到的苹果CMS直链站点 -> 直接并入聚合 sites
+      - meta:         发现报告摘要（写入 health.json）
+    文件不存在或解析失败时返回空结果，不影响主流程。
+    """
+    empty = ([], [], [], {"enabled": False})
+    if not os.path.exists(DISCOVERED_FILE):
+        return empty
+    try:
+        with open(DISCOVERED_FILE, "r", encoding="utf-8") as f:
+            d = json.load(f)
+    except Exception:
+        return empty
+
+    cfg_items, live_items, directs = [], [], []
+    for c in (d.get("configs") or []):
+        if c.get("url"):
+            cfg_items.append({"name": c.get("name", "发现源"), "url": c["url"],
+                              "source": "discovered", "from": c.get("from", "")})
+    for lv in (d.get("lives") or []):
+        if lv.get("url"):
+            live_items.append({"name": "发现·" + str(lv.get("name", "直播")),
+                               "url": lv["url"], "fmt": lv.get("fmt", "m3u"), "epg": "",
+                               "source": "discovered", "from": lv.get("from", "")})
+    for s in (d.get("direct_sites") or []):
+        if s.get("api"):
+            directs.append(s)
+    meta = {
+        "enabled": True,
+        "generated_at": d.get("generated_at", ""),
+        "seed_count": d.get("seed_count", 0),
+        "stats": d.get("stats", {}),
+        "merged_lives": len(live_items),
+        "merged_configs": len(cfg_items),
+        "merged_directs": len(directs),
+    }
+    return cfg_items, live_items, directs, meta
+
+
 def decide_source(rep, it, state, fail_threshold):
     """根据本次探活结果与历史状态，决定该源本次是否纳入聚合。
 
@@ -579,11 +659,32 @@ def main():
     min_channels = int(settings.get("min_live_channels", 3))
     keep_days = int(settings.get("keep_history_days", 30))
     fail_threshold = int(settings.get("fail_threshold", 3))
+    auto_discover = bool(settings.get("auto_discover", True))
 
-    config_items = sources.get("configs", [])
-    live_items = sources.get("lives", [])
+    # 自动发现：每天刷新一次知名源发现池（可关），再并入源池
+    if auto_discover:
+        maybe_refresh_discovery(True, timeout)
+
+    config_items = list(sources.get("configs", []))
+    live_items = list(sources.get("lives", []))
     generated_at = now_cn().strftime("%Y-%m-%d %H:%M:%S UTC+8")
     state = load_state()
+
+    # 并入「知名源发现」候选（discover.py 产出），按 url 去重，手工源优先。
+    disc_cfg, disc_live, disc_direct, disc_meta = load_discovered()
+    if disc_meta.get("enabled"):
+        have_cfg = {it.get("url") for it in config_items}
+        for it in disc_cfg:
+            if it["url"] not in have_cfg:
+                config_items.append(it)
+                have_cfg.add(it["url"])
+        have_live = {it.get("url") for it in live_items}
+        for it in disc_live:
+            if it["url"] not in have_live:
+                live_items.append(it)
+                have_live.add(it["url"])
+        log("并入发现源：配置 +%d / 直播 +%d / 直链站点 %d（来自 discovered.json）" %
+            (disc_meta["merged_configs"], disc_meta["merged_lives"], disc_meta["merged_directs"]))
 
     # 并发探活配置源
     log("探活 %d 个配置源 ..." % len(config_items))
@@ -634,9 +735,22 @@ def main():
             else:
                 log("  ✗ 直播源 %-10s 暂离/剔除：%s" % (rep["name"], rep["reason"]))
 
-    # 合并
-    merged_sites = merge_sites(site_batches)
-    log("合并去重后 sites=%d 个" % len(merged_sites))
+    # 合并：配置源的 sites + 发现到的苹果CMS直链站点
+    discovered_site_objects = []
+    for s in disc_direct:
+        discovered_site_objects.append({
+            "key": s.get("name", "发现") + "@发现",
+            "name": s.get("name", "发现源"),
+            "type": 1,
+            "api": s.get("api", ""),
+            "searchable": 1,
+            "quickSearch": 0,
+            "filterable": 1,
+            "group": "🌐发现直链",
+        })
+    merged_sites = merge_sites(site_batches + [discovered_site_objects])
+    log("合并去重后 sites=%d 个（其中发现直链 %d 个）" %
+        (len(merged_sites), len(discovered_site_objects)))
 
     cfg = build_config(merged_sites, valid_live_sources, {}, generated_at)
     m3u_text, uniq_channels = build_m3u(all_channels, generated_at)
@@ -648,23 +762,42 @@ def main():
     log("  影视仓清单：候选 %d 个 → 可用 %d 个，失效 %d 个" %
         (fongmi_total, fongmi_ok, len(fongmi_dead)))
 
-    # 降级保护：某一类有效源骤降（疑似网络异常）时，保留该类上次产出，避免清空
+    # 降级保护：某一类有效源骤降（疑似网络异常）时，保留该类上次产出，避免清空。
+    # 基线取「最近 N 天历史快照的最大值」而非仅看上一次：
+    #   避免连续两天网络异常时，第二天拿已被污染的昨日低值当基线而漏判。
     degraded_cfg = False
     degraded_live = False
-    if os.path.exists(HEALTH_OUT):
+    baseline_sites = 0
+    baseline_live = 0
+    try:
+        if os.path.exists(HISTORY_DIR):
+            for fn in os.listdir(HISTORY_DIR):
+                m = re.match(r"health-(\d{4}-\d{2}-\d{2})\.json$", fn)
+                if not m:
+                    continue
+                try:
+                    with open(os.path.join(HISTORY_DIR, fn), "r", encoding="utf-8") as f:
+                        snap = json.load(f)
+                    sm = snap.get("health", snap).get("summary", {})
+                    baseline_sites = max(baseline_sites, int(sm.get("sites_merged", 0)))
+                    baseline_live = max(baseline_live, int(sm.get("live_ok", 0)))
+                except Exception:
+                    continue
+    except Exception:
+        pass
+    # 历史快照缺失时回退到上一次 health.json
+    if baseline_sites == 0 and os.path.exists(HEALTH_OUT):
         try:
             with open(HEALTH_OUT, "r", encoding="utf-8") as f:
-                prev_health = json.load(f)
-            prev_sites = prev_health.get("summary", {}).get("sites_merged", 0)
-            prev_live = prev_health.get("summary", {}).get("live_ok", 0)
-            # 配置骤降：上次 >20，本次掉到 30% 以下
-            if prev_sites > 20 and merged_sites < prev_sites * 0.3:
-                degraded_cfg = True
-            # 直播骤降：上次有效，本次全挂
-            if prev_live > 0 and uniq_channels == 0:
-                degraded_live = True
+                baseline_sites = int(json.load(f).get("summary", {}).get("sites_merged", 0))
         except Exception:
             pass
+    # 配置骤降：基线 >20，本次掉到 30% 以下
+    if baseline_sites > 20 and len(merged_sites) < baseline_sites * 0.3:
+        degraded_cfg = True
+    # 直播骤降：基线有效，本次全挂
+    if baseline_live > 0 and uniq_channels == 0:
+        degraded_live = True
 
     degraded = degraded_cfg or degraded_live
     if degraded:
@@ -706,6 +839,7 @@ def main():
             "fongmi_ok": fongmi_ok,
             "degraded_cfg": degraded_cfg,
             "degraded_live": degraded_live,
+            "discovered": disc_meta,
         },
         "configs": sorted(config_reports, key=lambda x: x["name"]),
         "lives": sorted(live_reports, key=lambda x: x["name"]),

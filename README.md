@@ -80,11 +80,14 @@ https://raw.githubusercontent.com/loser-mete/tvbox-source/main/all.m3u
 ## 二、它是怎么工作的
 
 1. **候选清单**：`sources.json` 里维护了一批经过验证的公开配置源和直播源。
-2. **每天定时探活**：GitHub Actions 每天北京时间 08:00 自动运行 `update.py`（也可手动触发）。
-3. **健康判定**：并发访问每个源——能打开且结构合法才保留；连续失败 3 天才永久剔除，避免网络抖动误杀。
-4. **聚合去重**：把有效源的站点按 `api` 去重合并进 `config.json`；直播频道合并进 `all.m3u` / `all.txt`。
-5. **容错设计**：支持带注释的 JSONC、加密源自动识别、多仓订阅递归展开、网络异常日保留上次成果。
-6. **全程留痕**：`health.json` 记录每个源的死活与耗时，`history/` 保留最近 30 天快照。
+2. **知名源发现**（新增）：`discover.py` 从 `discovery_seeds.json` 里的知名影视仓源（xiaosa、饭太硬、安忆、东篱等）出发，**展开其内部结构**，提取可用的直播订阅地址与苹果CMS 直链接口，验证后写入 `discovered.json`。`update.py` 每天自动刷新一次发现池并并入源池。想增加/减少发现来源，改 `discovery_seeds.json` 即可。
+3. **每天定时探活**：GitHub Actions 每天北京时间 08:00 自动运行 `update.py`（也可手动触发）。
+4. **健康判定**：并发访问每个源——能打开且结构合法才保留；连续失败 3 天才永久剔除，避免网络抖动误杀。
+5. **聚合去重**：把有效源的站点按 `api` 去重合并进 `config.json`；直播频道合并进 `all.m3u` / `all.txt`。
+6. **容错设计**：支持带注释的 JSONC、加密源自动识别、多仓订阅递归展开、网络异常日保留上次成果；发现池失效不影响手工源。
+7. **全程留痕**：`health.json` 记录每个源的死活、耗时与发现池概况，`history/` 保留最近 30 天快照。
+
+> **发现器的边界**：只提取「公开订阅地址」——排除 `proxy://` / 相对路径 / drpy 脚本 / 带 token 的鉴权地址，以及名字含「会员/付费/赞助」的账号共享线路；单个直播源频道数超过 3000 的巨型清单也会跳过，避免 `all.m3u` 膨胀拖慢客户端。`myfav.json` 精选配置不依赖发现池，保持稳定。
 
 ### 当前状态
 详见 [health.json](health.json)。摘要会显示有效/失效源数量、合并站点数、直播频道数。
@@ -102,6 +105,9 @@ https://raw.githubusercontent.com/loser-mete/tvbox-source/main/all.m3u
 | `fongmi.json` | **影视仓专用**：配置地址清单（urls 数组），影视仓填这个 |
 | `config.json` | **TVBox 原版专用**：单仓聚合配置，TVBox 填这个（含 csp 站，需配 jar） |
 | `fongmi_seeds.json` | 影视仓种子清单来源（实测有效的优质源） |
+| `discovery_seeds.json` | ⭐知名源发现种子（xiaosa / 饭太硬等，想加发现来源改这里） |
+| `discover.py` | 发现器：展开知名源，提取并验证直播/直链候选地址（零依赖） |
+| `discovered.json` | 发现池产出：当日验证通过的直播/直链/完整配置候选，供 update.py 并入 |
 | `all.m3u` | 聚合后的直播源（M3U 格式） |
 | `all.txt` | 聚合后的直播源（名称,URL 格式） |
 | `health.json` | 健康报告：每个源死活、剔除名单、观察名单 |

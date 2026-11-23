@@ -1,0 +1,354 @@
+{
+  "generated_at": "2026-11-23 11:07:39 UTC+8",
+  "seed_count": 13,
+  "seeds": [
+    {
+      "name": "聚合线路",
+      "url": "http://tvjuhe.mitetech.cn:5622/",
+      "note": "OK"
+    },
+    {
+      "name": "挺好线路",
+      "url": "https://ztha.top/TVBox/thdjk.json",
+      "note": "OK"
+    },
+    {
+      "name": "小马线路",
+      "url": "https://szyyds.cn/tv/x.json",
+      "note": "OK"
+    },
+    {
+      "name": "王二小",
+      "url": "https://9280.kstore.vip/newwex.json",
+      "note": "OK"
+    },
+    {
+      "name": "卡卡线路",
+      "url": "https://jikefuye.cn/tvbox.json",
+      "note": "OK"
+    },
+    {
+      "name": "酷喵1",
+      "url": "https://15487.kstore.space/%E9%85%B72.txt",
+      "note": "OK"
+    },
+    {
+      "name": "酷喵2",
+      "url": "https://15487.kstore.space/%E9%85%B71.txt",
+      "note": "OK"
+    },
+    {
+      "name": "安忆",
+      "url": "https://cnb.cool/ayrjk/tvbox/-/git/raw/main/api.json",
+      "note": "OK"
+    },
+    {
+      "name": "东篱2",
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/chitue/dongliTV/main/api.json",
+      "note": "OK"
+    },
+    {
+      "name": "东篱1",
+      "url": "https://gh-proxy.org/https://raw.githubusercontent.com/chitue/dongliTV/main/api.json",
+      "note": "OK"
+    },
+    {
+      "name": "饭太硬",
+      "url": "https://qist.wyfc.qzz.io/fty.json",
+      "note": "OK"
+    },
+    {
+      "name": "xiaosa",
+      "url": "https://qist.wyfc.qzz.io/xiaosa/api.json",
+      "note": "OK"
+    },
+    {
+      "name": "动漫线路",
+      "url": "https://www.yingm.cc/dm/dm.json",
+      "note": "OK"
+    }
+  ],
+  "stats": {
+    "live_ok": 15,
+    "direct_ok": 28,
+    "config_ok": 0
+  },
+  "lives": [
+    {
+      "name": "很少",
+      "url": "https://mpimg.cn/down.php/fa04b02ffac54ac877f5250d3d70e494.txt",
+      "from": "安忆",
+      "fmt": "txt",
+      "channels": 32
+    },
+    {
+      "name": "Easy-体育赛事",
+      "url": "https://sports.easyzz.dpdns.org/live.m3u=187675",
+      "from": "安忆",
+      "fmt": "m3u",
+      "channels": 44
+    },
+    {
+      "name": "PPV体育赛事",
+      "url": "https://www.korice.eu.org/ppv_m3u.php",
+      "from": "安忆",
+      "fmt": "m3u",
+      "channels": 44
+    },
+    {
+      "name": "风云试看",
+      "url": "http://iptv.4666888.xyz/FYTV.txt",
+      "from": "安忆",
+      "fmt": "txt",
+      "channels": 49
+    },
+    {
+      "name": "范明明（需开启V6网络）",
+      "url": "https://nos.netease.com/ysf/3d75a78a0fc7ede372c03598d6d10367.m3u",
+      "from": "安忆",
+      "fmt": "m3u",
+      "channels": 67
+    },
+    {
+      "name": "B站直播",
+      "url": "https://sub.ottiptv.cc/bililive.m3u",
+      "from": "安忆",
+      "fmt": "m3u",
+      "channels": 118
+    },
+    {
+      "name": "Kimentanm",
+      "url": "https://down.nigx.cn/raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u",
+      "from": "王二小",
+      "fmt": "m3u",
+      "channels": 120
+    },
+    {
+      "name": "Kimentanm",
+      "url": "https://ghfast.top/https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u",
+      "from": "安忆",
+      "fmt": "m3u",
+      "channels": 120
+    },
+    {
+      "name": "Kimentanm",
+      "url": "https://ghproxy.net/https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u",
+      "from": "饭太硬",
+      "fmt": "m3u",
+      "channels": 120
+    },
+    {
+      "name": "YanG",
+      "url": "https://gh-proxy.org/https://raw.githubusercontent.com/YanG-1989/m3u/main/Gather.m3u",
+      "from": "东篱2",
+      "fmt": "m3u",
+      "channels": 123
+    },
+    {
+      "name": "综合直播",
+      "url": "http://193.123.86.190:14888/TV/iptv.php",
+      "from": "王二小",
+      "fmt": "m3u",
+      "channels": 188
+    },
+    {
+      "name": "国外电视台",
+      "url": "https://iptv-org.github.io/iptv/languages/zho.m3u",
+      "from": "安忆",
+      "fmt": "m3u",
+      "channels": 228
+    },
+    {
+      "name": "自动更新",
+      "url": "https://z.szyyds.cn/iptv",
+      "from": "小马线路",
+      "fmt": "m3u",
+      "channels": 261
+    },
+    {
+      "name": "LunaTV",
+      "url": "https://live.zbds.top/tv/iptv4.m3u",
+      "from": "安忆",
+      "fmt": "m3u",
+      "channels": 343
+    },
+    {
+      "name": "YY轮播1",
+      "url": "https://sub.ottiptv.cc/yylunbo.m3u",
+      "from": "安忆",
+      "fmt": "m3u",
+      "channels": 537
+    }
+  ],
+  "direct_sites": [
+    {
+      "name": "🎉OK|采集",
+      "api": "https://api.okzyw.net/api.php/provide/vod/",
+      "from": "安忆",
+      "count": 20
+    },
+    {
+      "name": "🎉U酷|采集",
+      "api": "https://api.ukuapi88.com/api.php/provide/vod/",
+      "from": "安忆",
+      "count": 20
+    },
+    {
+      "name": "🎉光速|采集",
+      "api": "https://api.guangsuapi.com/api.php/provide/vod/json",
+      "from": "安忆",
+      "count": 20
+    },
+    {
+      "name": "🎉天涯|采集",
+      "api": "https://tyyszyapi.com/api.php/provide/vod/",
+      "from": "安忆",
+      "count": 20
+    },
+    {
+      "name": "🎉如意|采集",
+      "api": "https://bycj.rytvapi.com/api.php/provide/vod",
+      "from": "安忆",
+      "count": 20
+    },
+    {
+      "name": "🎉巨量|采集",
+      "api": "https://api.juliang.live/api/provide/vod",
+      "from": "安忆",
+      "count": 20
+    },
+    {
+      "name": "🎉无尽|采集",
+      "api": "https://api.wujinapi.me/api.php/provide/vod/from/wjm3u8/",
+      "from": "安忆",
+      "count": 20
+    },
+    {
+      "name": "🎉最大|采集",
+      "api": "https://api.zuidapi.com/api.php/provide/vod/",
+      "from": "安忆",
+      "count": 20
+    },
+    {
+      "name": "🎉牛牛|采集",
+      "api": "https://api.niuniuzy.me/api.php/provide/vod/",
+      "from": "安忆",
+      "count": 20
+    },
+    {
+      "name": "🎉猫眼|采集",
+      "api": "https://api.maoyanapi.top/api.php/provide/vod",
+      "from": "安忆",
+      "count": 30
+    },
+    {
+      "name": "🎉纯净┃4K",
+      "api": "https://api.wsyzy.net/api.php/provide/vod/",
+      "from": "安忆",
+      "count": 20
+    },
+    {
+      "name": "🎉芒果|采集",
+      "api": "https://caiji.mgzyapi.com/api.php/provide/vod/",
+      "from": "安忆",
+      "count": 20
+    },
+    {
+      "name": "🎉西瓜|采集",
+      "api": "https://caiji.xgzyapi.com/api.php/provide/vod/",
+      "from": "安忆",
+      "count": 20
+    },
+    {
+      "name": "🎉速播|高清",
+      "api": "https://subocj.com/api.php/provide/vod",
+      "from": "安忆",
+      "count": 20
+    },
+    {
+      "name": "🎉魔都|采集",
+      "api": "https://www.mdzyapi.com/api.php/provide/vod/",
+      "from": "安忆",
+      "count": 20
+    },
+    {
+      "name": "🎉鸭鸭|采集",
+      "api": "https://cj.yayazy.net/api.php/provide/vod/",
+      "from": "安忆",
+      "count": 20
+    },
+    {
+      "name": "🤣魔都┃动漫",
+      "api": "https://caiji.moduapi.cc/api.php/provide/vod/",
+      "from": "安忆",
+      "count": 20
+    },
+    {
+      "name": "光速资源(切)",
+      "api": "https://api.guangsuapi.com/api.php/provide/vod/",
+      "from": "小马线路",
+      "count": 20
+    },
+    {
+      "name": "影视 | 天涯",
+      "api": "http://tyyszy.com/api.php/provide/vod",
+      "from": "小马线路",
+      "count": 20
+    },
+    {
+      "name": "影视 | 建安",
+      "api": "http://154.219.117.232:9981/jacloudapi.php/provide/vod",
+      "from": "小马线路",
+      "count": 20
+    },
+    {
+      "name": "影视 | 极速[直连]",
+      "api": "https://jszyapi.com/api.php/provide/vod/?ac=list",
+      "from": "小马线路",
+      "count": 20
+    },
+    {
+      "name": "影视 | 非凡[直连]",
+      "api": "http://ffzy.tv/api.php/provide/vod/",
+      "from": "小马线路",
+      "count": 20
+    },
+    {
+      "name": "百度",
+      "api": "https://api.apibdzy.com/api.php/provide/vod?ac=list",
+      "from": "小马线路",
+      "count": 20
+    },
+    {
+      "name": "闪电资源(切)",
+      "api": "http://sdzyapi.com/api.php/provide/vod/",
+      "from": "小马线路",
+      "count": 20
+    },
+    {
+      "name": "酷喵🐱360短剧",
+      "api": "https://360zy.com/api.php/provide/vod",
+      "from": "酷喵1",
+      "count": 20
+    },
+    {
+      "name": "酷喵🐱琥珀",
+      "api": "https://www.huyaapi.com/api.php/provide/vod/from/hym3u8",
+      "from": "酷喵1",
+      "count": 20
+    },
+    {
+      "name": "酷喵🐱虎牙",
+      "api": "https://www.huyaapi.com/api.php/provide/vod/",
+      "from": "酷喵1",
+      "count": 20
+    },
+    {
+      "name": "酷喵🐱飞龙",
+      "api": "https://360zy.com/api.php/provide/vod?",
+      "from": "酷喵1",
+      "count": 20
+    }
+  ],
+  "configs": []
+}

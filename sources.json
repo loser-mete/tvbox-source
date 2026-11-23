@@ -68,6 +68,7 @@
     "min_config_bytes": 300,
     "min_live_channels": 3,
     "keep_history_days": 30,
-    "fail_threshold": 3
+    "fail_threshold": 3,
+    "auto_discover": true
   }
 }

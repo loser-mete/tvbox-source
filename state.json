@@ -1,6 +1,6 @@
 {
   "https://jihulab.com/bh666/YGBH/-/raw/main/ygbox.json": {
-    "fail_streak": 13,
+    "fail_streak": 18,
     "last_ok": "",
     "site_count": 0
   },
@@ -30,7 +30,7 @@
     "site_count": 48
   },
   "https://raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json": {
-    "fail_streak": 11,
+    "fail_streak": 13,
     "last_ok": "",
     "site_count": 0
   },
@@ -53,5 +53,145 @@
     "fail_streak": 0,
     "last_ok": "2026-11-23",
     "site_count": 747
+  },
+  "https://cdn.jsdmirror.com/gh/CCSH/IPTV@main/live_platforms.m3u": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 2976
+  },
+  "https://pan.29o.cn/down.php/aa846bceb7a1b4adb0385b1f61b192e8.txt": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 1578
+  },
+  "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 1619
+  },
+  "https://gh-proxy.org/raw.githubusercontent.com/vinkerq/iptv-api/refs/heads/master/iptv.txt": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 1963
+  },
+  "https://www.cttv.vip/ys/json/ctzb.txt": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 2200
+  },
+  "https://file.icve.com.cn/file_doc/178/700/2C9AF1F98DBC1523826C0CD4DA8D8947.m3u": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 594
+  },
+  "https://cdn.jsdmirror.com/gh/1539971456/ys-tvbox@main/iptv/iptv.txt": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 626
+  },
+  "https://gh-proxy.org/https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv4.m3u": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 1225
+  },
+  "https://z.szyyds.cn/iptv": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 261
+  },
+  "https://live.zbds.top/tv/iptv4.m3u": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 343
+  },
+  "http://gh-proxy.org/raw.githubusercontent.com/Supprise0901/TVBox_live/main/live.txt": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 575
+  },
+  "https://iptv.acgomo.top/interface.m3u": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 1666
+  },
+  "https://sub.ottiptv.cc/douyuyqk.m3u": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 919
+  },
+  "http://gh-proxy.org/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 658
+  },
+  "https://sub.ottiptv.cc/yylunbo.m3u": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 537
+  },
+  "https://iptv-org.github.io/iptv/languages/zho.m3u": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 228
+  },
+  "http://193.123.86.190:14888/TV/iptv.php": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 188
+  },
+  "https://nos.netease.com/ysf/3d75a78a0fc7ede372c03598d6d10367.m3u": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 67
+  },
+  "https://sub.ottiptv.cc/huyayqk.m3u": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 1063
+  },
+  "http://iptv.4666888.xyz/FYTV.txt": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 49
+  },
+  "https://gh-proxy.org/https://raw.githubusercontent.com/YanG-1989/m3u/main/Gather.m3u": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 123
+  },
+  "https://ghfast.top/https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 120
+  },
+  "https://ghproxy.net/https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 120
+  },
+  "https://down.nigx.cn/raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 120
+  },
+  "https://sub.ottiptv.cc/bililive.m3u": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 118
+  },
+  "https://sports.easyzz.dpdns.org/live.m3u=187675": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 44
+  },
+  "https://mpimg.cn/down.php/fa04b02ffac54ac877f5250d3d70e494.txt": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 32
+  },
+  "https://www.korice.eu.org/ppv_m3u.php": {
+    "fail_streak": 0,
+    "last_ok": "2026-11-23",
+    "site_count": 39
   }
 }

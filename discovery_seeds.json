@@ -1,0 +1,80 @@
+{
+  "_comment": "源发现种子：discover.py 从这些知名影视仓源展开，提取其中的直播订阅地址与苹果CMS直链，验证后写入 discovered.json，供 update.py 并入源池。用户点名的 xiaosa / 饭太硬排在最前。发现源失效不影响主源池；想增加发现来源改这里即可。",
+  "seeds": [
+    {
+      "name": "xiaosa",
+      "url": "https://qist.wyfc.qzz.io/xiaosa/api.json",
+      "note": "用户点名·知名综合配置(csp为主)"
+    },
+    {
+      "name": "饭太硬",
+      "url": "https://qist.wyfc.qzz.io/fty.json",
+      "note": "用户点名·饭太硬可用json入口(www.饭太硬.net/tv 实为反爬图片)"
+    },
+    {
+      "name": "聚合线路",
+      "url": "http://tvjuhe.mitetech.cn:5622/",
+      "note": "知名聚合配置，含多条直播与直链"
+    },
+    {
+      "name": "挺好线路",
+      "url": "https://ztha.top/TVBox/thdjk.json",
+      "note": "挺好影视仓完整配置"
+    },
+    {
+      "name": "动漫线路",
+      "url": "https://www.yingm.cc/dm/dm.json",
+      "note": "动漫向完整配置"
+    },
+    {
+      "name": "卡卡线路",
+      "url": "https://jikefuye.cn/tvbox.json",
+      "note": "卡卡完整配置"
+    },
+    {
+      "name": "酷喵1",
+      "url": "https://15487.kstore.space/%E9%85%B72.txt",
+      "note": "酷喵完整配置(直链较多)"
+    },
+    {
+      "name": "酷喵2",
+      "url": "https://15487.kstore.space/%E9%85%B71.txt",
+      "note": "酷喵完整配置(直链较多)"
+    },
+    {
+      "name": "王二小",
+      "url": "https://9280.kstore.vip/newwex.json",
+      "note": "王二小完整配置"
+    },
+    {
+      "name": "小马线路",
+      "url": "https://szyyds.cn/tv/x.json",
+      "note": "小马完整配置，含直播与直链"
+    },
+    {
+      "name": "安忆",
+      "url": "https://cnb.cool/ayrjk/tvbox/-/git/raw/main/api.json",
+      "note": "安忆完整配置，站点/直播数量最多"
+    },
+    {
+      "name": "东篱1",
+      "url": "https://gh-proxy.org/https://raw.githubusercontent.com/chitue/dongliTV/main/api.json",
+      "note": "东篱完整配置(代理入口1)"
+    },
+    {
+      "name": "东篱2",
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/chitue/dongliTV/main/api.json",
+      "note": "东篱完整配置(代理入口2，互为备份)"
+    }
+  ],
+  "settings": {
+    "timeout": 12,
+    "max_workers": 10,
+    "min_live_channels": 3,
+    "max_channels_per_source": 1500,
+    "max_discovered_channels_total": 6000,
+    "max_lives": 15,
+    "max_direct": 40,
+    "max_configs": 20
+  }
+}
