@@ -1,6 +1,6 @@
 {
   "https://jihulab.com/bh666/YGBH/-/raw/main/ygbox.json": {
-    "fail_streak": 18,
+    "fail_streak": 19,
     "last_ok": "",
     "site_count": 0
   },
@@ -30,7 +30,7 @@
     "site_count": 48
   },
   "https://raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json": {
-    "fail_streak": 13,
+    "fail_streak": 14,
     "last_ok": "",
     "site_count": 0
   },
@@ -170,7 +170,7 @@
     "site_count": 120
   },
   "https://down.nigx.cn/raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u": {
-    "fail_streak": 0,
+    "fail_streak": 1,
     "last_ok": "2026-11-23",
     "site_count": 120
   },
@@ -192,6 +192,6 @@
   "https://www.korice.eu.org/ppv_m3u.php": {
     "fail_streak": 0,
     "last_ok": "2026-11-23",
-    "site_count": 39
+    "site_count": 38
   }
 }
