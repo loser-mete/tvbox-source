@@ -73,8 +73,16 @@
       "url": "https://gh-proxy.com/https://raw.githubusercontent.com/IY-CPU/IY/main/%E5%A4%A9%E7%A5%9EIY.png"
     },
     {
+      "name": "香雅情",
+      "url": "https://raw.githubusercontent.com/xyq254245/xyqonlinerule/main/XYQTVBox.json"
+    },
+    {
       "name": "纽特新片",
       "url": "https://raw.githubusercontent.com/Newtxin/tvbox/main/2.json"
+    },
+    {
+      "name": "高天流云",
+      "url": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/0825.json"
     },
     {
       "name": "南风XC",
@@ -85,8 +93,16 @@
       "url": "https://jihulab.com/bh666/YGBH/-/raw/main/ygbox.json"
     },
     {
+      "name": "多仓合一",
+      "url": "https://raw.githubusercontent.com/noimank/tvbox/master/tvboxmuti.json"
+    },
+    {
       "name": "胜寒",
       "url": "https://raw.githubusercontent.com/hanhan8127/TVBox/main/hanXC.json"
+    },
+    {
+      "name": "文本TV",
+      "url": "https://raw.githubusercontent.com/txtvv/txtv/main/tvbox/0326.json"
     }
   ]
 }
